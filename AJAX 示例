@@ -1,0 +1,22 @@
+var http;
+  if(window.XMLHttpRequest){
+   http = new XMLHttpRequest();
+  } else if (window.ActiveXObject){
+   http = new ActiveXObject("Microsoft.XMLHTTP");
+   if (!http){
+    http = new ActiveXObject("Msxml2.XMLHTTP");
+   }
+  }
+ function handleStateResponse() {
+  if (this.readyState == 4) {
+   if(this.status == 200) {
+    var results = this.responseText;
+    console.log(results);
+   } else {
+    alert ( "Not able to retrieve description" );
+   }
+  }
+ }
+ http.open();
+ http.onreadystatechange=handleStateResponse;
+ http.send();
